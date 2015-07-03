@@ -85,12 +85,6 @@ if( $elevation == $nCONST_NO_DATA )
 
 if( $elevation == $nCONST_NO_DATA )
 {
-  $elevation = getElevation( $worldCoordX,$worldCoordY,13,'dem250',0 );
-  $hsrc = "250m";
-}
-
-if( $elevation == $nCONST_NO_DATA )
-{
   $elevation = "-----";
   $hsrc = "-----";
 }
