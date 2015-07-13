@@ -27,12 +27,17 @@ function getElevation( $worldCoordX, $worldCoordY
   if( !$sTextAll )
     return $nCONST_NO_DATA;
 
-  $pRetNotFound = strpos( $sTextAll, "Not Found" );
-  if( $pRetNotFound != FALSE )
+  preg_match('/HTTP\/1\.[0|1|x] ([0-9]{3})/', $http_response_header[0], $matches);
+  $status_code = $matches[1];
+
+  switch ($status_code)
   {
-    $pRet404 = strpos( $sTextAll, "404" );
-      if( $pRet404 != FALSE )
-        return $nCONST_NO_DATA;
+    case '200':
+      break;
+    case '404':
+      return $nCONST_NO_DATA;
+    default:
+      return $nCONST_NO_DATA;
   }
 
   $asText = explode( "\n",  $sTextAll );
