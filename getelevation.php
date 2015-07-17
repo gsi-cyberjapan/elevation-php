@@ -40,6 +40,7 @@ function getElevation( $worldCoordX, $worldCoordY
       return $nCONST_NO_DATA;
   }
 
+  $sTextAll = preg_replace("/\r\n|\r|\n/", "\n", $sTextAll);
   $asText = explode( "\n",  $sTextAll );
   if( count( $asText ) < $py )
     return $nCONST_NO_DATA;
